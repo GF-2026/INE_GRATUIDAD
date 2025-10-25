@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FURA - Formulario (A4 doble página)</title>
+
+  <style>
+    @page { size: A4; margin: 0; }
+    html, body { height: 100%; margin: 0; font-family: Arial, sans-serif; background: #ccc; }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto;
+      page-break-after: always;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-sizing: border-box;
+    }
+    .page1 { background-image: url("page1.jpg"); }
+    .page2 { background-image: url("page2.jpg"); }
+
+    form { position: absolute; inset: 0; }
+
+    /* contenedores (posiciones ajustables) */
+    .mnvm-container1, .mnvm-container2,
+    .mvm-container1, .mvm-container2,
+    .nameComplete, .names-container2,
+    .AddressComplete, .lastname1-container2,
+    .lastname2-container1, .lastname2-container2,
+    .mail-container,
+    .date-container1, .since {
+      display: flex;
+      gap: 1.5px;
+      position: absolute;
+    }
+
+    /* posiciones (usa las tuyas si ya están definidas) */
+    .mnvm-container1 { top: 190px; left: 229.5px; }
+    .mnvm-container2 { top: 210px; left: 257px; }
+    .mvm-container1 { top: 237px; left: 229.5px; }
+    .mvm-container2 { top: 263px; left: 258px; }
+    .nameComplete { top: 297px; left: 229.5px; }
+    .names-container2 { top: 356px; left: 238px; }
+    .AddressComplete { top: 344px; left: 229.5px; }
+    .lastname1-container2 { top: 409px; left: 238px; }
+    .lastname2-container1 { top: 392px; left: 229.5px; }
+    .lastname2-container2 { top: 461px; left: 239px; }
+    .mail-container { top: 580px; left: 229.5px; }
+    .date-container1 { top: 820px; left: 130px; }
+    .since { top: 736px; left: 137px; }
+     .tel-container { top: 485px; left: 230px; }
+     .cel-container { top: 485px; left: 404px; }
+    /* fecha (año/mes/día) y CURP (clave) */
+
+ .year-container1,.month-container1,
+    .day-container1 {
+      display: flex;
+      gap: 2.9px;
+      position: absolute;
+    }
+   .year-container2,.month-container2,.day-container2{
+    display: flex;
+      gap: 3.1px;
+      position: absolute;
+    }
+    .clave-container1{
+      display: flex;
+      gap: 2.25px;
+      position: absolute;
+    }
+     .clave-container2{
+          display: flex;
+      gap: 4px;
+      position: absolute;
+    }
+    .tel-container, .cel-container{
+      display: flex;
+      gap: 2.1px;
+      position: absolute;
+    }
+
+    .year-container1 { top: 438px; left: 229.5px; }
+    .month-container1 { top: 438px; left: 309px; }
+    .day-container1 { top: 438px; left: 356px; }
+    .year-container2 { top: 514px; left: 242px; }
+    .month-container2 { top: 514px; left: 330px; }
+    .day-container2 { top: 514px; left: 383px; }
+
+    .clave-container1 { top: 532px; left: 231px; }
+    .clave-container2 { top: 566px; left: 242px; }
+
+    /* tamaño inputs */
+    .mnvm-container1 input, .mvm-container1 input,
+    .mnvm-container2 input, .mvm-container2 input,
+    .nameComplete input, .names-container2 input,
+    .AddressComplete input, .lastname1-container2 input,
+    .lastname2-container1 input, .lastname2-container2 input,
+    .mail-container input {
+      width: 420px; height: 19px; text-align: center; font-size: 16px; border: 1px solid #888;
+    }
+    .mnvm-container2 input, .mvm-container2 input { width: 396px; }
+    .names-container2 input, .lastname1-container2 input, .lastname2-container2 input { width: 416px; }
+
+    .tel-container input, .cel-container input,
+    .clave-container1 input, .clave-container2 input {
+      width: 9.5px; height: 20px; text-align: center; font-size: 12px; border: 1px solid #888;
+    }
+
+    .year-container1 input, .year-container2 input { width: 9.5px; height: 19px; font-size: 12px; text-align:center; }
+    .month-container1 input, .month-container2 input { width: 9.5px; height: 19px; font-size: 12px; text-align:center; }
+    .day-container1 input, .day-container2 input { width: 10px; height: 19px; font-size: 12px; text-align:center; }
+
+    /* quitar recuadro de la fecha (visual) */
+    .date-container1 input, .since input {
+      border: none !important; outline: none !important; background: transparent !important;
+      text-align: center; font-size: 14px;
+    }
+
+    /* cajas de firma (transparentes) */
+    .signature-box {
+      position: absolute;
+      width: 250px;
+      height: 100px;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .signature-box1 { bottom: 255px; left: 410px; }
+    .signature-box2 { bottom: 340px; left: 425px; }
+
+    .signature-box img { max-width:100%; max-height:100%; object-fit:contain; display:block; }
+
+    /* modal */
+    #signatureModal {
+      display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.6); justify-content:center; align-items:center;
+    }
+    #signatureModal .modal-content {
+      background:#fff; padding:16px; border-radius:8px; width:90%; max-width:480px; text-align:center;
+    }
+    #signaturePad { width:100%; height:220px; border:none; touch-action:none; background:transparent; }
+
+    /* boton PDF */
+    #btnPDF {
+      position: fixed; bottom: 20px; right: 20px; padding: 12px 18px; font-size: 16px;
+      background: #2b6cb0; color: white; border: none; border-radius: 8px; cursor:pointer; z-index:1000;
+    }
+
+    /* clase temporal para quitar bordes al generar PDF */
+    .no-border-pdf { border:none !important; background:transparent !important; box-shadow:none !important; }
+
+    @media print {
+      #btnPDF, #signatureModal { display:none !important; }
+      .signature-box { background: transparent !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PÁGINA 1 -->
+  <div class="page page1">
+    <form>
+      <!-- Teléfono (ejemplo) -->
+      <div class="tel-container">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text">
+      </div>
+
+      <!-- Celular -->
+      <div class="cel-container">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text">
+      </div>
+
+      <!-- CLAVE (varios inputs, página 1) -->
+      <div class="clave-container1">
+        <!-- 18 celdas ejemplo -->
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text">
+      </div>
+
+      <!-- Fecha por celdas (año:4, mes:2, día:2) - página 1 -->
+      <div class="year-container1">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+      </div>
+      <div class="month-container1">
+        <input maxlength="1" type="text"><input maxlength="1" type="text">
+      </div>
+      <div class="day-container1">
+        <input maxlength="1" type="text"><input maxlength="1" type="text">
+      </div>
+
+      <!-- MNVM / MVM / nombres / apellidos / mail / fecha -->
+      <div class="mnvm-container1"><input maxlength="80" type="text" placeholder="MOVIMIENTO NACIONAL VIVA MÉXICO"></div>
+      <div class="mvm-container1"><input maxlength="40" type="text" placeholder="MOVIMIENTO VIVA MÉXICO"></div>
+      <div class="nameComplete"><input maxlength="40" type="text" placeholder="Nombre(s)"></div>
+      <div class="AddressComplete"><input maxlength="40" type="text" placeholder="Apellido Paterno"></div>
+      <div class="lastname2-container1"><input maxlength="40" type="text" placeholder="Apellido Materno"></div>
+      <div class="mail-container"><input maxlength="80" type="email" placeholder="USUARIO@GMAIL.COM"></div>
+      <div class="date-container1"><input type="date"></div>
+
+      <!-- Firma (muestra) -->
+      <div class="signature-box signature-box1" id="sigBox1" title="Hacer clic para firmar">
+        <img id="firma1" alt="Firma 1">
+      </div>
+
+    </form>
+  </div>
+
+  <!-- PÁGINA 2 -->
+  <div class="page page2">
+    <form>
+      <!-- CLAVE (varios inputs, página 2) -->
+      <div class="clave-container2">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+        <input maxlength="1" type="text"><input maxlength="1" type="text">
+      </div>
+
+      <!-- Fecha por celdas página 2 -->
+      <div class="year-container2">
+        <input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text"><input maxlength="1" type="text">
+      </div>
+      <div class="month-container2">
+        <input maxlength="1" type="text"><input maxlength="1" type="text">
+      </div>
+      <div class="day-container2">
+        <input maxlength="1" type="text"><input maxlength="1" type="text">
+      </div>
+      <div class="mnvm-container2"><input maxlength="80" type="text" placeholder="MOVIMIENTO NACIONAL VIVA MÉXICO"></div>
+      <div class="mvm-container2"><input maxlength="40" type="text" placeholder="MOVIMIENTO VIVA MÉXICO"></div>
+      <div class="names-container2"><input maxlength="40" type="text"></div>
+      <div class="lastname1-container2"><input maxlength="40" type="text"></div>
+      <div class="lastname2-container2"><input maxlength="40" type="text"></div>
+      <div class="since"><input type="date"></div>
+
+      <div class="signature-box signature-box2" id="sigBox2" title="Hacer clic para firmar">
+        <img id="firma2" alt="Firma 2">
+      </div>
+    </form>
+  </div>
+
+  <!-- MODAL DE FIRMA -->
+  <div id="signatureModal">
+    <div class="modal-content">
+      <p><strong>Firme dentro del recuadro</strong></p>
+      <canvas id="signaturePad"></canvas>
+      <div style="margin-top:10px;">
+        <button id="clearBtn" style="background:#e74c3c;color:#fff;padding:8px 12px;border:none;border-radius:6px;">Limpiar</button>
+        <button id="saveBtn" style="background:#2ecc71;color:#fff;padding:8px 12px;border:none;border-radius:6px;">Guardar</button>
+        <button id="closeBtn" style="background:#7f8c8d;color:#fff;padding:8px 12px;border:none;border-radius:6px;">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN PDF -->
+  <button id="btnPDF">Descargar FURA.pdf</button>
+
+  <!-- LIBS -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+  <script>
+  /* ---------------------------
+     LÓGICA: firma modal / dibujo
+     --------------------------- */
+  const modal = document.getElementById('signatureModal');
+  const signaturePad = document.getElementById('signaturePad');
+  const ctx = signaturePad.getContext('2d');
+  const firma1 = document.getElementById('firma1');
+  const firma2 = document.getElementById('firma2');
+  const sigBox1 = document.getElementById('sigBox1');
+  const sigBox2 = document.getElementById('sigBox2');
+
+  let drawing = false;
+
+  function resizeSignaturePad() {
+    const rect = signaturePad.getBoundingClientRect();
+    signaturePad.width = rect.width;
+    signaturePad.height = rect.height;
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#000';
+    ctx.clearRect(0,0,signaturePad.width, signaturePad.height);
+  }
+
+  // abrir modal al clicar cualquier caja de firma
+  function abrirModal() {
+    modal.style.display = 'flex';
+    resizeSignaturePad();
+  }
+  sigBox1.addEventListener('click', abrirModal);
+  sigBox2.addEventListener('click', abrirModal);
+
+  // botones modal
+  document.getElementById('closeBtn').onclick = () => { modal.style.display = 'none'; };
+  document.getElementById('clearBtn').onclick = () => { ctx.clearRect(0,0,signaturePad.width, signaturePad.height); };
+  document.getElementById('saveBtn').onclick = () => {
+    const dataURL = signaturePad.toDataURL('image/png');
+    // asigna la misma imagen a ambas vistas
+    firma1.src = dataURL;
+    firma2.src = dataURL;
+    modal.style.display = 'none';
+  };
+
+  // util para obtener posición dentro del canvas
+  function getPos(e, canvas) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = (e.touches ? e.touches[0].clientX : e.clientX);
+    const clientY = (e.touches ? e.touches[0].clientY : e.clientY);
+    return { x: clientX - rect.left, y: clientY - rect.top };
+  }
+
+  function startDraw(e) {
+    drawing = true;
+    const p = getPos(e, signaturePad);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    e.preventDefault();
+  }
+  function draw(e) {
+    if (!drawing) return;
+    const p = getPos(e, signaturePad);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    e.preventDefault();
+  }
+  function endDraw() {
+    drawing = false;
+    ctx.beginPath();
+  }
+
+  // listeners para mouse/touch
+  signaturePad.addEventListener('mousedown', startDraw);
+  signaturePad.addEventListener('mousemove', draw);
+  signaturePad.addEventListener('mouseup', endDraw);
+  signaturePad.addEventListener('mouseout', endDraw);
+  signaturePad.addEventListener('touchstart', startDraw, { passive: false });
+  signaturePad.addEventListener('touchmove', draw, { passive: false });
+  signaturePad.addEventListener('touchend', endDraw);
+
+  // asegúrate de redimensionar al mostrar modal
+  window.addEventListener('resize', () => {
+    if (modal.style.display === 'flex') resizeSignaturePad();
+  });
+
+  /* -------------------------------------------------
+     SINCRONIZACIÓN DE CAMPOS ENTRE PÁGINA 1 Y PÁGINA 2
+     ------------------------------------------------- */
+
+  // función genérica que sincroniza:
+  // - si hay 1 input en cada contenedor => copia el valor completo
+  // - si hay múltiples inputs => sincroniza por índice (cada input)
+  function syncFields(sourceSelector, destinationSelector) {
+    const source = document.querySelector(sourceSelector);
+    const dest = document.querySelector(destinationSelector);
+    if (!source || !dest) return;
+
+    const srcInputs = Array.from(source.querySelectorAll('input'));
+    const dstInputs = Array.from(dest.querySelectorAll('input'));
+    // Un campo único (texto largo)
+    if (srcInputs.length === 1 && dstInputs.length === 1) {
+      srcInputs[0].addEventListener('input', () => { dstInputs[0].value = srcInputs[0].value; });
+      dstInputs[0].addEventListener('input', () => { srcInputs[0].value = dstInputs[0].value; });
+      // también change para inputs tipo date
+      srcInputs[0].addEventListener('change', () => { dstInputs[0].value = srcInputs[0].value; });
+      dstInputs[0].addEventListener('change', () => { srcInputs[0].value = dstInputs[0].value; });
+    } else {
+      // múltiples inputs (por ejemplo: clave letra a letra)
+      srcInputs.forEach((input, i) => {
+        ['input','change'].forEach(evt => {
+          input.addEventListener(evt, () => {
+            if (dstInputs[i]) dstInputs[i].value = input.value;
+          });
+        });
+      });
+      dstInputs.forEach((input, i) => {
+        ['input','change'].forEach(evt => {
+          input.addEventListener(evt, () => {
+            if (srcInputs[i]) srcInputs[i].value = input.value;
+          });
+        });
+      });
+    }
+  }
+
+  /* -------------------------------------------------
+     AUTOSALTO: clave (varios inputs) y fecha (year/month/day)
+     ------------------------------------------------- */
+
+  // auto-advance y backspace para arrays de inputs
+  function setupAutoAdvance(nodeList, maxLenPerInput = 1) {
+    const inputs = Array.from(nodeList);
+    if (!inputs.length) return;
+    inputs.forEach((inp, idx) => {
+      // input event
+      inp.addEventListener('input', () => {
+        // si el usuario pega más de 1 carácter, toma solo el primero para la celda actual
+        if (inp.value.length > maxLenPerInput) {
+          inp.value = inp.value.slice(0, maxLenPerInput);
+        }
+        if (inp.value.length >= maxLenPerInput && idx < inputs.length - 1) {
+          inputs[idx + 1].focus();
+        }
+      });
+      // backspace para retroceder
+      inp.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && inp.value.length === 0 && idx > 0) {
+          inputs[idx - 1].focus();
+        }
+      });
+    });
+  }
+
+  /* -------------------------------------------------
+     GENERAR PDF (usando html2canvas + jsPDF)
+     ------------------------------------------------- */
+
+  async function generatePDF(filename = 'FURA.pdf') {
+    // ocultar modal si está abierto
+    modal.style.display = 'none';
+
+    // clase temporal para quitar bordes
+    const allInputs = document.querySelectorAll('form input');
+    allInputs.forEach(i => i.classList.add('no-border-pdf'));
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF('p','mm','a4');
+    const pages = document.querySelectorAll('.page');
+
+    for (let i = 0; i < pages.length; i++) {
+      // html2canvas: deshabilitamos taint y usamos escala para mayor nitidez
+      const canvas = await html2canvas(pages[i], { scale: 2, useCORS: true });
+      const imgData = canvas.toDataURL('image/png');
+      const imgProps = doc.getImageProperties(imgData);
+      const pdfWidth = doc.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      if (i < pages.length - 1) doc.addPage();
+    }
+
+    doc.save(filename);
+
+    // revertir clases
+    allInputs.forEach(i => i.classList.remove('no-border-pdf'));
+  }
+
+  /* -------------------------------------------------
+     INICIALIZACIÓN AL CARGAR COMPLETAMENTE LA PÁGINA
+     (window.load para asegurar fondos / imágenes)
+     ------------------------------------------------- */
+  window.addEventListener('load', () => {
+    // pequeño retardo para evitar race conditions al renderizar backgrounds
+    setTimeout(() => {
+      // sincronizaciones
+      syncFields('.nameComplete', '.names-container2');
+      syncFields('.AddressComplete', '.lastname1-container2');
+      syncFields('.lastname2-container1', '.lastname2-container2');
+      syncFields('.year-container1', '.year-container2');
+      syncFields('.month-container1', '.month-container2');
+      syncFields('.day-container1', '.day-container2');
+      syncFields('.clave-container1', '.clave-container2');
+      syncFields('.date-container1', '.since');
+
+      // autosalto para clave (varios inputs, maxlength=1)
+      setupAutoAdvance(document.querySelectorAll('.clave-container1 input'), 1);
+      setupAutoAdvance(document.querySelectorAll('.clave-container2 input'), 1);
+
+      // autosalto para tel / cel (si usas celdas)
+      setupAutoAdvance(document.querySelectorAll('.tel-container input'), 1);
+      setupAutoAdvance(document.querySelectorAll('.cel-container input'), 1);
+
+      // FECHA: año (4) -> mes (2) -> día (2)
+      // Para esto vamos a agrupar los inputs en arrays y controlar manualmente
+      const year1 = Array.from(document.querySelectorAll('.year-container1 input'));
+      const month1 = Array.from(document.querySelectorAll('.month-container1 input'));
+      const day1 = Array.from(document.querySelectorAll('.day-container1 input'));
+      const year2 = Array.from(document.querySelectorAll('.year-container2 input'));
+      const month2 = Array.from(document.querySelectorAll('.month-container2 input'));
+      const day2 = Array.from(document.querySelectorAll('.day-container2 input'));
+
+      // función helper para avanzar cuando se alcanza longitud total
+      function setupDateAuto(yearArr, monthArr, dayArr) {
+        // año: cuando los 4 inputs estén llenos -> foco al primer mes
+        yearArr.forEach((inp, idx) => {
+          inp.addEventListener('input', () => {
+            if (yearArr.every(i => i.value.length === 1)) {
+              if (monthArr[0]) monthArr[0].focus();
+            } else if (inp.value.length === 1 && idx < yearArr.length -1) {
+              yearArr[idx+1].focus();
+            }
+          });
+          inp.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && inp.value === '' && idx > 0) yearArr[idx-1].focus();
+          });
+        });
+        // mes: cuando los 2 inputs llenos -> foco día
+        monthArr.forEach((inp, idx) => {
+          inp.addEventListener('input', () => {
+            if (monthArr.every(i => i.value.length === 1)) {
+              if (dayArr[0]) dayArr[0].focus();
+            } else if (inp.value.length === 1 && idx < monthArr.length -1) {
+              monthArr[idx+1].focus();
+            }
+          });
+          inp.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && inp.value === '' && idx > 0) monthArr[idx-1].focus();
+          });
+        });
+        // día: similar
+        dayArr.forEach((inp, idx) => {
+          inp.addEventListener('input', () => {
+            if (inp.value.length === 1 && idx < dayArr.length - 1) dayArr[idx+1].focus();
+          });
+          inp.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && inp.value === '' && idx > 0) dayArr[idx-1].focus();
+          });
+        });
+      }
+
+      setupDateAuto(year1, month1, day1);
+      setupDateAuto(year2, month2, day2);
+
+      // Si quieres que al llenar año/mes/dia se copie como valor tipo date en .date-container inputs,
+      // podríamos montar esa lógica aquí (opcional).
+
+    }, 200); // 200ms
+  });
+
+  // evento del botón PDF
+  document.getElementById('btnPDF').addEventListener('click', () => generatePDF('FURA.pdf'));
+
+  </script>
+</body>
+</html>
