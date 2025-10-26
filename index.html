@@ -182,7 +182,7 @@ async function generatePDF() {
   const signatureBoxes = document.querySelectorAll('.signature-box[data-required="true"]');
   signatureBoxes.forEach(box => {
     const img = box.querySelector('img');
-    if (!img || !img.src || img.src.length < 50) { // sin firma o en blanco
+    if (!img || !img.src || img.src.length < 50) {
       allFilled = false;
       box.style.outline = '3px solid red';
     } else {
@@ -196,7 +196,15 @@ async function generatePDF() {
     return;
   }
 
-  // 🔸 Si todo está lleno, continuar normalmente
+  // 🔸 Concatenar nombre completo antes de generar PDF
+  const name = document.querySelector('.nameComplete input')?.value.trim() || '';
+  const lastname1 = document.querySelector('.lastname1_container input')?.value.trim() || '';
+  const lastname2 = document.querySelector('.lastname2_container input')?.value.trim() || '';
+  const fullName = [name, lastname1, lastname2].filter(Boolean).join(' ');
+  const fullNameInput = document.getElementById('fullName');
+  if (fullNameInput) fullNameInput.value = fullName.toUpperCase();
+
+  // 🔸 Continuar con la generación del PDF
   modal.style.display = 'none';
   const allInputs = document.querySelectorAll('form input');
   allInputs.forEach(i => i.classList.add('no-border-pdf'));
@@ -211,9 +219,8 @@ async function generatePDF() {
   doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
 
   const pdfBlob = doc.output('blob');
-  const fullNameInput = document.getElementById('fullName');
-  const nombreCampo = fullNameInput?.value.trim().toUpperCase() || 'GRATUIDAD';
-  const nombreArchivo = `Carta de gratuidad de - ${nombreCampo}.pdf`;
+  const nombreCampo = fullName || 'GRATUIDAD';
+  const nombreArchivo = `Carta de gratuidad de - ${nombreCampo.toUpperCase()}.pdf`;
 
   saveAs(pdfBlob, nombreArchivo);
 
