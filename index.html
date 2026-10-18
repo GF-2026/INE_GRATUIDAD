@@ -11,13 +11,15 @@
     html, body { height: 100%; margin: 0; font-family: 'Patrick Hand', cursive; font-size: 20px; line-height: 1.6; background: #ccc; }
     .page { position: relative; width: 210mm; height: 297mm; margin: 0 auto; background: #fff url("page3.jpg") center/cover no-repeat; }
     form { position: absolute; inset: 0; }
-    
+    .since input {
+  width: 600px;
+  height: 20px;
+  text-align: center;
+}
     /* Contenedores principales */
-    .nameComplete, .lastname1_container, .lastname2_container, .tel-container, .date-container1, .since, .city,
+    .nameComplete, .lastname1_container, .lastname2_container, .tel-container, .date-container1, .city,
     .street, .number, .colony, .municipality, .state, .zipcode { position: absolute; display: flex; gap: 0; }
 
-    .tel-container input { width: 14px; font-size: 20px; text-align: center; }
-    
     /* Posiciones de los 6 contenedores principales (separados 100px verticalmente entre sí) */
     .container-1 { position: absolute; top: 60px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
     .container-2 { position: absolute; top: 225px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
@@ -25,7 +27,7 @@
     .container-4 { position: absolute; top: 555px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
     .container-5 { position: absolute; top: 718px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
     .container-6 { position: absolute; top: 883px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
-    
+    .since { position: absolute; top: 20px; left: 100px;}
     /* Hilera genérica dentro de los contenedores */
     .clave-hilera { display: flex; gap: 10px; }
 
@@ -43,24 +45,10 @@
       line-height: 14px;
     }
 
-    .lastname1_container input { width: 170px; font-family: monospace !important; color: #000; text-align: center;}
-    .lastname2_container input { width: 170px; font-family: monospace !important; color: #000; text-align: center;}
-    .city input { width: 100px; }
-    .nameComplete input{ text-align: center; width: 190px;}
-
     .signature-box { position: absolute; bottom: 20px; left: 30px; width: 250px; height: 100px; cursor: pointer; display: flex; justify-content: center; align-items: center; }
     .signature-box img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
     .fullName { position: absolute; bottom: 0px; left: 900px; }
     .fullName input { width: 240px; font-size: 14px; border: 1px solid #888; text-transform: uppercase; text-align: center; font-family: 'Patrick Hand', cursive; }
-
-    /* Dirección inputs */
-    .street input { width: 150px; }
-    .number input { width: 30px; }
-    .colony input { width: 100px; }
-    .municipality input { width: 100px; }
-    .state input { width: 90px; }
-    .zipcode input { width: 55px; }
-    .since input { width: 750px; text-align: center;}
 
     #btnPDF { position: fixed; bottom: 20px; right: 20px; padding: 12px 18px; font-size: 16px; background: #2b6cb0; color: white; border: none; border-radius: 8px; cursor: pointer; z-index: 1000; }
     .no-border-pdf { border: none !important; background: transparent !important; }
@@ -82,19 +70,7 @@
 
 <body>
   <div class="page">
-    <form>
-      <div class="city"><input type="text" placeholder="Ciudad"  ></div>
-      <div class="nameComplete"><input type="text" placeholder="Nombre(s)"  ></div>
-      <div class="lastname1_container"><input type="text" placeholder="Apellidos Paterno"  ></div>
-      <div class="lastname2_container"><input type="text" placeholder="Apellidos Materno"></div>
-      <div class="street"><input type="text" placeholder="Calle"  ></div>
-      <div class="number"><input type="text" placeholder="Número"  ></div>
-      <div class="colony"><input type="text" placeholder="Colonia"  ></div>
-      <div class="municipality"><input type="text" placeholder="Municipio"  ></div>
-      <div class="state"><input type="text" placeholder="Estado"  ></div>
-      <div class="zipcode"><input type="text" placeholder="C.P."  ></div>
-      <div class="fullName"><input type="text" id="fullName" placeholder="Nombre completo"></div>
-      
+    <form>  
       <!-- CONTENEDOR 1 (6 hileras) -->
       <div class="container-1">
         <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
@@ -155,12 +131,6 @@
         <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
       </div>
 
-      <div class="tel-container">
-        <input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1">
-        <input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1">
-        <input maxlength="1"><input maxlength="1">
-      </div>
-      <div class="date-container1"><input type="date"  ></div>
       <div class="since"><input type="text"></div>
       <div class="signature-box" id="sigBox1" data- ="true">
         <img id="firma1" alt="Firma">
