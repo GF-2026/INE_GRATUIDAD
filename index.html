@@ -19,12 +19,12 @@
     .tel-container input { width: 14px; font-size: 20px; text-align: center; }
     
     /* Posiciones de los 6 contenedores principales (separados 100px verticalmente entre sí) */
-    .container-1 { position: absolute; top: 60px; left: 160px; display: flex; flex-direction: column; gap: 6px; }
-    .container-2 { position: absolute; top: 225px; left: 160px; display: flex; flex-direction: column; gap: 6px; }
-    .container-3 { position: absolute; top: 390px; left: 160px; display: flex; flex-direction: column; gap: 6px; }
-    .container-4 { position: absolute; top: 555px; left: 160px; display: flex; flex-direction: column; gap: 6px; }
-    .container-5 { position: absolute; top: 718px; left: 160px; display: flex; flex-direction: column; gap: 6px; }
-    .container-6 { position: absolute; top: 883px; left: 160px; display: flex; flex-direction: column; gap: 6px; }
+    .container-1 { position: absolute; top: 60px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
+    .container-2 { position: absolute; top: 225px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
+    .container-3 { position: absolute; top: 390px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
+    .container-4 { position: absolute; top: 555px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
+    .container-5 { position: absolute; top: 718px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
+    .container-6 { position: absolute; top: 883px; left: 160px; display: flex; flex-direction: column; gap: 8px; }
     
     /* Hilera genérica dentro de los contenedores */
     .clave-hilera { display: flex; gap: 10px; }
@@ -69,84 +69,90 @@
     /* Modal firma */
     #signatureModal { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; }
     #signatureModal .modal-content { background: #fff; padding: 16px; border-radius: 8px; width: 90%; max-width: 480px; text-align: center; }
-    #signaturePad { width: 100%; height: 220px; border: none; touch-action: none; background: transparent; }
-    
-  </style>
+#signaturePad {
+  display: block;
+  width: 100%;
+  height: 220px;
+  border: none;
+  touch-action: none;
+  background: transparent;
+}
+</style>
 </head>
 
 <body>
   <div class="page">
     <form>
-      <div class="city"><input type="text" placeholder="Ciudad" required></div>
-      <div class="nameComplete"><input type="text" placeholder="Nombre(s)" required></div>
-      <div class="lastname1_container"><input type="text" placeholder="Apellidos Paterno" required></div>
+      <div class="city"><input type="text" placeholder="Ciudad"  ></div>
+      <div class="nameComplete"><input type="text" placeholder="Nombre(s)"  ></div>
+      <div class="lastname1_container"><input type="text" placeholder="Apellidos Paterno"  ></div>
       <div class="lastname2_container"><input type="text" placeholder="Apellidos Materno"></div>
-      <div class="street"><input type="text" placeholder="Calle" required></div>
-      <div class="number"><input type="text" placeholder="Número" required></div>
-      <div class="colony"><input type="text" placeholder="Colonia" required></div>
-      <div class="municipality"><input type="text" placeholder="Municipio" required></div>
-      <div class="state"><input type="text" placeholder="Estado" required></div>
-      <div class="zipcode"><input type="text" placeholder="C.P." required></div>
+      <div class="street"><input type="text" placeholder="Calle"  ></div>
+      <div class="number"><input type="text" placeholder="Número"  ></div>
+      <div class="colony"><input type="text" placeholder="Colonia"  ></div>
+      <div class="municipality"><input type="text" placeholder="Municipio"  ></div>
+      <div class="state"><input type="text" placeholder="Estado"  ></div>
+      <div class="zipcode"><input type="text" placeholder="C.P."  ></div>
       <div class="fullName"><input type="text" id="fullName" placeholder="Nombre completo"></div>
       
       <!-- CONTENEDOR 1 (6 hileras) -->
       <div class="container-1">
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
       </div>
 
       <!-- CONTENEDOR 2 (6 hileras) -->
       <div class="container-2">
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
       </div>
 
       <!-- CONTENEDOR 3 (6 hileras) -->
       <div class="container-3">
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
       </div>
 
       <!-- CONTENEDOR 4 (6 hileras) -->
       <div class="container-4">
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
       </div>
 
       <!-- CONTENEDOR 5 (6 hileras) -->
       <div class="container-5">
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
       </div>
 
       <!-- CONTENEDOR 6 (6 hileras) -->
       <div class="container-6">
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
-        <div class="clave-hilera"><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required><input maxlength="1"><input maxlength="1" required></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
+        <div class="clave-hilera"><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ><input maxlength="1"><input maxlength="1"  ></div>
       </div>
 
       <div class="tel-container">
@@ -154,9 +160,9 @@
         <input maxlength="1"><input maxlength="1"><input maxlength="1"><input maxlength="1">
         <input maxlength="1"><input maxlength="1">
       </div>
-      <div class="date-container1"><input type="date" required></div>
+      <div class="date-container1"><input type="date"  ></div>
       <div class="since"><input type="text"></div>
-      <div class="signature-box" id="sigBox1" data-required="true">
+      <div class="signature-box" id="sigBox1" data- ="true">
         <img id="firma1" alt="Firma">
       </div>
     </form>
@@ -175,41 +181,208 @@
   </div>
 
   <button id="btnPDF">Descargar PDF.pdf</button>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script><script>
+  // ==========================================
+  // 1. ELEMENTOS DE LA FIRMA
+  // ==========================================
+  const modal = document.getElementById('signatureModal');
+  const signaturePad = document.getElementById('signaturePad');
+  const ctx = signaturePad.getContext('2d');
+  const firma1 = document.getElementById('firma1');
+  const sigBox1 = document.getElementById('sigBox1');
 
-  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+  let drawing = false;
+  let hasSignature = false;
+  let lastX = 0;
+  let lastY = 0;
 
-  <script>
-    // Firma
-    const modal = document.getElementById('signatureModal');
-    const signaturePad = document.getElementById('signaturePad');
-    const ctx = signaturePad.getContext('2d');
-    const firma1 = document.getElementById('firma1');
-    const sigBox1 = document.getElementById('sigBox1');
-    let drawing = false;
+  // ==========================================
+  // 2. CONFIGURACIÓN DEL ÁREA DE FIRMA
+  // ==========================================
+  function resizeSignaturePad() {
+    const rect = signaturePad.getBoundingClientRect();
 
-    function resizeSignaturePad() {
-      const rect = signaturePad.getBoundingClientRect();
-      signaturePad.width = rect.width;
-      signaturePad.height = rect.height;
-      ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-      ctx.strokeStyle = '#000';
-      ctx.clearRect(0,0,signaturePad.width, signaturePad.height);
+    signaturePad.width = rect.width;
+    signaturePad.height = rect.height;
+
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = '#000';
+
+    hasSignature = false;
+  }
+
+  // Abrir ventana de firma
+  sigBox1.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    resizeSignaturePad();
+  });
+
+  // ==========================================
+  // 3. DIBUJAR CON MOUSE O DEDO
+  // ==========================================
+  function getPos(e) {
+    const rect = signaturePad.getBoundingClientRect();
+
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
+  }
+
+  signaturePad.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+
+    drawing = true;
+
+    const pos = getPos(e);
+    lastX = pos.x;
+    lastY = pos.y;
+
+    signaturePad.setPointerCapture(e.pointerId);
+  });
+
+  signaturePad.addEventListener('pointermove', (e) => {
+    if (!drawing) return;
+
+    e.preventDefault();
+
+    const pos = getPos(e);
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+
+    lastX = pos.x;
+    lastY = pos.y;
+
+    hasSignature = true;
+  });
+
+  function stopDrawing() {
+    drawing = false;
+  }
+
+  signaturePad.addEventListener('pointerup', stopDrawing);
+  signaturePad.addEventListener('pointercancel', stopDrawing);
+  signaturePad.addEventListener('lostpointercapture', stopDrawing);
+
+  // ==========================================
+  // 4. BOTONES DE LA FIRMA
+  // ==========================================
+  document.getElementById('clearBtn').onclick = () => {
+    ctx.clearRect(
+      0,
+      0,
+      signaturePad.width,
+      signaturePad.height
+    );
+
+    hasSignature = false;
+  };
+
+  document.getElementById('saveBtn').onclick = () => {
+    if (hasSignature) {
+      firma1.src = signaturePad.toDataURL('image/png');
+    } else {
+      firma1.removeAttribute('src');
     }
 
-    sigBox1.addEventListener('click', () => { modal.style.display = 'flex'; resizeSignaturePad(); });
-    document.getElementById('closeBtn').onclick = () => modal.style.display = 'none';
-    document.getElementById('clearBtn').onclick = () => ctx.clearRect(0,0,signaturePad.width, signaturePad.height);
-    document.getElementById('saveBtn').onclick = () => { firma1.src = signaturePad.toDataURL('image/png'); modal.style.display = 'none'; };
+    modal.style.display = 'none';
+  };
 
-    function getPos(e, canvas) {
-      const rect = canvas.getBoundingClientRect();
-      const clientX = (e.touches ? e.touches[0].clientX : e.clientX);
-      const clientY = (e.touches ? e.touches[0].clientY : e.clientY);
-      return { x: clientX - rect.left, y: clientY - rect.top };
+  document.getElementById('closeBtn').onclick = () => {
+    modal.style.display = 'none';
+  };
+
+  // ==========================================
+  // 5. DESCARGAR PDF
+  // ==========================================
+  document.getElementById('btnPDF').addEventListener('click', async () => {
+
+    const botonPDF = document.getElementById('btnPDF');
+    const pagina = document.querySelector('.page');
+
+    try {
+      botonPDF.disabled = true;
+      botonPDF.textContent = 'Generando PDF...';
+
+      // Esperar a que la imagen de fondo esté disponible
+      const fondo = new Image();
+      fondo.src = 'page3.jpg';
+
+      await new Promise((resolve, reject) => {
+        if (fondo.complete && fondo.naturalWidth > 0) {
+          resolve();
+          return;
+        }
+
+        fondo.onload = resolve;
+        fondo.onerror = () => reject(
+          new Error('No se pudo cargar page3.jpg')
+        );
+      });
+
+      // Esperar a que se carguen las fuentes
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+
+      // Generar imagen de la página completa
+      const canvas = await html2canvas(pagina, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: false,
+        backgroundColor: '#ffffff',
+        logging: false
+      });
+
+      const imagen = canvas.toDataURL('image/jpeg', 0.98);
+
+      // Crear PDF tamaño A4
+      const { jsPDF } = window.jspdf;
+
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4',
+        compress: true
+      });
+
+      // Ajustar la página al tamaño A4
+      pdf.addImage(
+        imagen,
+        'JPEG',
+        0,
+        0,
+        210,
+        297,
+        undefined,
+        'FAST'
+      );
+
+      // Descargar PDF
+      pdf.save('HOJA_DE_GRATUIDAD.pdf');
+
+    } catch (error) {
+      console.error('Error al generar el PDF:', error);
+
+      alert(
+        'No fue posible generar el PDF.\n\n' +
+        'Verifica que page3.jpg esté en la carpeta del archivo HTML ' +
+        'y que tengas conexión a Internet para cargar las bibliotecas.'
+      );
+
+    } finally {
+      botonPDF.disabled = false;
+      botonPDF.textContent = 'Descargar PDF.pdf';
     }
-  </script>
+
+  });
+</script>
 </body>
 </html>
