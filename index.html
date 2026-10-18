@@ -25,11 +25,24 @@
     .container-4 { position: absolute; top: 555px; left: 90px; display: flex; flex-direction: column; gap: 6px; }
     .container-5 { position: absolute; top: 718px; left: 90px; display: flex; flex-direction: column; gap: 6px; }
     .container-6 { position: absolute; top: 883px; left: 90px; display: flex; flex-direction: column; gap: 6px; }
+    
     /* Hilera genérica dentro de los contenedores */
     .clave-hilera { display: flex; gap: 9px; }
 
     form input { text-align: center; font-size: 16px; border: 1px solid #888; height: 12px; text-transform: uppercase; font-family: 'Patrick Hand', cursive !important; color: #000; }
-    .clave-hilera input { width: 12px; font-family: monospace !important; color: #000; }
+    
+    /* MODIFICACIÓN: Campos de texto circulares para los contenedores */
+    .clave-hilera input { 
+      width: 14px; 
+      height: 14px; 
+      border-radius: 50%; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: monospace !important; 
+      color: #000; 
+      line-height: 14px;
+    }
+
     .lastname1_container input { width: 170px; font-family: monospace !important; color: #000; text-align: center;}
     .lastname2_container input { width: 170px; font-family: monospace !important; color: #000; text-align: center;}
     .city input { width: 100px; }
@@ -161,7 +174,7 @@
     </div>
   </div>
 
-  <button id="btnPDF">Descargar GRATUIDAD.pdf</button>
+  <button id="btnPDF">Descargar PDF.pdf</button>
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
@@ -197,113 +210,6 @@
       const clientY = (e.touches ? e.touches[0].clientY : e.clientY);
       return { x: clientX - rect.left, y: clientY - rect.top };
     }
-
-    function startDraw(e){ drawing = true; const p=getPos(e,signaturePad); ctx.beginPath(); ctx.moveTo(p.x,p.y); e.preventDefault();}
-    function draw(e){ if(!drawing)return; const p=getPos(e,signaturePad); ctx.lineTo(p.x,p.y); ctx.stroke(); e.preventDefault();}
-    function endDraw(){ drawing=false; ctx.beginPath(); }
-
-    signaturePad.addEventListener('mousedown', startDraw);
-    signaturePad.addEventListener('mousemove', draw);
-    signaturePad.addEventListener('mouseup', endDraw);
-    signaturePad.addEventListener('mouseout', endDraw);
-    signaturePad.addEventListener('touchstart', startDraw, { passive:false });
-    signaturePad.addEventListener('touchmove', draw, { passive:false });
-    signaturePad.addEventListener('touchend', endDraw);
-
-    async function generatePDF() {
-      const requiredInputs = document.querySelectorAll('form input[required]');
-      let allFilled = true;
-      let firstEmpty = null;
-
-      requiredInputs.forEach(input => {
-        if (!input.value.trim()) {
-          allFilled = false;
-          if (!firstEmpty) firstEmpty = input;
-          input.style.border = '2px solid red';
-        } else {
-          input.style.border = '1px solid #888';
-        }
-      });
-
-      const signatureBoxes = document.querySelectorAll('.signature-box[data-required="true"]');
-      signatureBoxes.forEach(box => {
-        const img = box.querySelector('img');
-        if (!img || !img.src || img.src.length < 50) {
-          allFilled = false;
-          box.style.outline = '3px solid red';
-        } else {
-          box.style.outline = 'none';
-        }
-      });
-
-      if (!allFilled) {
-        alert("⚠️ Por favor, completa todos los campos requeridos (incluida la firma).");
-        if (firstEmpty) firstEmpty.focus();
-        return;
-      }
-
-      const name = document.querySelector('.nameComplete input')?.value.trim() || '';
-      const lastname1 = document.querySelector('.lastname1_container input')?.value.trim() || '';
-      const lastname2 = document.querySelector('.lastname2_container input')?.value.trim() || '';
-      const fullName = [name, lastname1, lastname2].filter(Boolean).join(' ');
-      const fullNameInput = document.getElementById('fullName');
-      if (fullNameInput) fullNameInput.value = fullName.toUpperCase();
-
-      modal.style.display = 'none';
-      const allInputs = document.querySelectorAll('form input');
-      allInputs.forEach(i => i.classList.add('no-border-pdf'));
-
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF('p', 'mm', 'a4');
-      const page = document.querySelector('.page');
-      const canvas = await html2canvas(page, { scale: 2, useCORS: true });
-      const imgData = canvas.toDataURL('image/png');
-      const pdfWidth = doc.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-      doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-
-      const pdfBlob = doc.output('blob');
-      const nombreCampo = fullName || 'GRATUIDAD';
-      const nombreArchivo = `Carta de gratuidad de - ${nombreCampo.toUpperCase()}.pdf`;
-
-      saveAs(pdfBlob, nombreArchivo);
-
-      allInputs.forEach(i => i.classList.remove('no-border-pdf'));
-    }
-
-    document.getElementById('btnPDF').addEventListener('click', () => generatePDF());
-
-    // Auto-tab y mayúsculas adaptado para todos los contenedores de clave
-    function setupAutoTab(containerSelector) {
-      const inputs = document.querySelectorAll(`${containerSelector} input`);
-      inputs.forEach((input, index) => {
-        input.addEventListener('input', () => { if(input.value.length>=input.maxLength && inputs[index+1]) inputs[index+1].focus(); });
-        input.addEventListener('keydown', (e) => { if(e.key==='Backspace' && input.value==='' && inputs[index-1]) inputs[index-1].focus(); });
-      });
-    }
-    setupAutoTab('.tel-container');
-    setupAutoTab('.container-1');
-    setupAutoTab('.container-2');
-    setupAutoTab('.container-3');
-    setupAutoTab('.container-4');
-    setupAutoTab('.container-5');
-    setupAutoTab('.container-6');
-
-    document.querySelectorAll('.clave-hilera input').forEach(inp => inp.addEventListener('input', ()=>{ inp.value = inp.value.toUpperCase(); }));
-
-    // Mes actual
-    const sinceInput = document.querySelector('.since input');
-    /*if(sinceInput){
-      const meses=["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
-      sinceInput.value = meses[new Date().getMonth()];
-    }
-
-    // Forzar uppercase en todos los inputs de texto
-    document.querySelectorAll('form input[type="text"]').forEach(input => {
-      input.addEventListener('input', () => {
-        input.value = input.value.toUpperCase();
-      });
-    });
   </script>
 </body>
 </html>
